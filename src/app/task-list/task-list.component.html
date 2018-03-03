@@ -1,0 +1,27 @@
+<form #frm="ngForm" (ngSubmit)="adicionar(frm)">
+<div class="ui-g">
+  <div class="ui-g-12">
+    <h1>Tarefa</h1>
+  </div>
+  <div class="ui-g-6 ui-fluid">
+    <label>Título</label>
+    <input pInputText name="titulo" ngModel  [required]="true"> 
+  </div>
+  
+  <div class="ui-g-12 ui-fluid">
+    <label>Descrição</label>
+    <input pInputText name="descricao" ngModel  [required]="true"> 
+  </div>
+  <div class="ui-g-12">
+      <button pButton type="submit" label="Adicionar" [disabled]="frm.invalid" ></button>
+  </div>
+</div>
+</form>
+<div class="ui-g">
+  <div class="ui-g-12">
+    <p-dataTable [value]="tarefas">
+    <p-column field="titulo" header="Titulo"></p-column>
+    <p-column field="descricao" header="Descricao"></p-column>
+    </p-dataTable>
+  </div>
+</div>
