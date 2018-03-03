@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class TarefaService {
 
-  tarefaUrl = 'http://tasklistrenatowagner.herokuapp.com/tarefa';
+  tarefaUrl = 'https://tasklistrenatowagner.herokuapp.com/tarefa';
   constructor(private http:HttpClient) { }
 
 
