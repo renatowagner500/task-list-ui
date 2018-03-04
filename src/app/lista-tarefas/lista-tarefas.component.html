@@ -1,0 +1,46 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+    <button pButton label="Adicionar" [routerLink]="['../novaTarefa']"></button>
+  </div>
+  <div class="ui-g-12">
+    <p-dataTable [value]="tarefas">
+      <p-column field="titulo" header="Titulo"></p-column>
+      <p-column field="descricao" header="Descrição"></p-column>
+      <p-column field="situacaoTarefa.situacao" header="Situação"></p-column>
+     
+      <p-column  header="Data Criação">
+          <ng-template pTemplate="body" let-tarefa="rowData">
+            {{tarefa?.dataCriacao| date:'dd/MM/yyyy'}}
+          </ng-template >
+      </p-column>
+      <p-column  header="Data Modificação">
+          <ng-template pTemplate="body" let-tarefa="rowData">
+            {{tarefa?.dataEdicao| date:'dd/MM/yyyy'}}
+          </ng-template >
+      </p-column>
+      <p-column  header="Data Conclusão">
+          <ng-template pTemplate="body" let-tarefa="rowData">
+            {{tarefa?.dataConclusao| date:'dd/MM/yyyy'}}
+          </ng-template >
+      </p-column>
+
+      <p-column header="Ações">
+        <ng-template let-tarefa="rowData" pTemplate="body">
+    
+         
+          <a (click)="excluir(tarefa.idTarefa)" title="Excluir">
+            <span class="fa fa-trash fa-lg"></span>
+          </a>
+          &nbsp;
+          <a [routerLink]="['../alterarTarefa', tarefa.idTarefa ]" title="Editar" *ngIf="tarefa?.situacaoTarefa?.idSituacaoTarefa!=2">
+            <span class="fa fa-pencil fa-lg"></span>
+
+          </a>
+
+
+        </ng-template>
+      </p-column>
+
+    </p-dataTable>
+  </div>
+</div>

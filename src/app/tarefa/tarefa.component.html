@@ -1,0 +1,34 @@
+<form #frm="ngForm" (ngSubmit)="adicionarOuAtualizar(frm)">
+  <input type="hidden" name="idTarefa" [ngModel]="tarefa?.idTarefa">
+  <div class="ui-g">
+    <div class="ui-g-6">
+      <h2>Tarefa</h2>
+    </div>
+    <div class="ui-g-6" align="right">
+      <h2>{{tarefa?.situacaoTarefa ? tarefa?.situacaoTarefa.situacao : 'Novo'}}</h2>
+    </div>
+    <div class="ui-g-6 ui-fluid">
+      <label>Título</label>
+      <input pInputText name="titulo" [(ngModel)]="tarefa.titulo" [required]="true">
+    </div>
+
+    <div class="ui-g-12 ui-fluid">
+      <label>Descrição</label>
+      <input pInputText name="descricao" [(ngModel)]="tarefa.descricao" [required]="true">
+    </div>
+    <div class="ui-g-6 ui-fluid" *ngIf="tarefa?.idTarefa">
+      <label>Data Criação</label>
+      <span >{{tarefa?.dataCriacao| date:'dd/MM/yyyy'}}</span>
+    </div>
+    <div class="ui-g-6 ui-fluid" *ngIf="tarefa?.idTarefa">
+      <label>Data Modificação</label><br/>
+      <span >{{tarefa?.dataEdicao| date:'dd/MM/yyyy'}}</span>
+    </div>
+
+    <div class="ui-g-12">
+      <button pButton label="Voltar" (click)="listTarefa()"></button>
+      <button pButton type="submit" [disabled]="frm.invalid" label="{{tarefa?.idTarefa ? 'Alterar' : 'Salvar'}}" *ngIf="tarefa?.situacaoTarefa?.idSituacaoTarefa!=2"></button>
+      <button pButton [disabled]="frm.invalid" type="button" label="Concluir" (click)="concluirTarefa()" *ngIf="tarefa?.situacaoTarefa?.idSituacaoTarefa==1"></button>
+    </div>
+  </div>
+</form>
