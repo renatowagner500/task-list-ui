@@ -5,8 +5,8 @@ import { Tarefa } from './tarefa/tarefa.model';
 @Injectable()
 export class TarefaService {
 
-  //tarefaUrl = 'https://tasklistrenatowagner.herokuapp.com/tarefa';
-  tarefaUrl = 'http://localhost:8080/tarefa';
+  tarefaUrl = 'https://tasklistrenatowagner.herokuapp.com/tarefa';
+  //tarefaUrl = 'http://localhost:8080/tarefa';
   constructor(private http: HttpClient) { }
 
 
